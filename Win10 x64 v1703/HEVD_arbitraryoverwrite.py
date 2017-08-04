@@ -381,6 +381,7 @@ def preamble():
 	debug_print ("")
 	debug_print ("Target Machine : Windows 10 64-bit 1703 (Creators Update)")
 	debug_print ("Author: @GradiusX")
+	debug_print ("References: http://cvr-data.blogspot.co.uk/2016/11/lpe-vulnerabilities-exploitation-on.html")
 	debug_print ("")
 
 if __name__ == '__main__':
