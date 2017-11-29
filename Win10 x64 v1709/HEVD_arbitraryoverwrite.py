@@ -279,7 +279,7 @@ def setup_worker_palette():
 
 	
 def set_address(address):
-	""" Sets """
+	""" Sets pFirstColor value of Worker Bitmap	 """
 	global hManager
 	address = c_ulonglong(address)
 	gdi32.SetPaletteEntries.argtypes = [HPALETTE, c_ulong, c_ulong, LPVOID]
