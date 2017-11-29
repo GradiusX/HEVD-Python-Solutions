@@ -296,7 +296,6 @@ def read_virtual(src, dest, len):
 	""" Reads value pointed at by Worker Palette """
 	global hWorker
 	set_address(src)
-	
 	gdi32.GetPaletteEntries.argtypes = [HPALETTE, c_ulong, c_ulong, LPVOID]
 	gdi32.GetPaletteEntries(hWorker, 0, len / 4, dest) # reads 4 bytes at a time
 
