@@ -416,7 +416,7 @@ def preamble():
 	debug_print ("Target Machine : Windows 10 64-bit 1709 (Fall Creators Update)")
 	debug_print ("Author: @GradiusX")
 	debug_print ("References: Demystifying Windows Kernel Exploitation by Abusing GDI Objects (Saif El Sherei)")
-	debug_print ("References: Abusing GDI for ring0 exploit primitives: Evolution (Nicolas Economou)")
+	debug_print ("            Abusing GDI for ring0 exploit primitives: Evolution (Nicolas Economou)")
 	debug_print ("")
 
 if __name__ == '__main__':
