@@ -95,7 +95,7 @@ def trigger_double_fetch():
 	t2 = threading.Thread(target=main_thread, args=(driver_handle,))
 	t2.start()
 	
-	debug_print ("[+] Waiting for TOCTOU to trigger ...")	
+	debug_print ("[+] Waiting for Double Fetch to trigger ...")	
 	t1.join()
 	t2.join()
 	
