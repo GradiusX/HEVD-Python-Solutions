@@ -232,7 +232,7 @@ def write_payload_dll(current_user, dest_file):
 	dll_file.close()
 	
 	
-def trigger_double_fetch():
+def trigger_IKRA():
 	''' Main Logic '''
 	global trigger_thread_stop
 	
@@ -301,4 +301,4 @@ def preamble():
 if __name__ == '__main__':
 	""" Main Function """
 	preamble()
-	trigger_double_fetch()
+	trigger_IKRA()
